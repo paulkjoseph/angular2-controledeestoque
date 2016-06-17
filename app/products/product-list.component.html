@@ -1,0 +1,49 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+
+    <!-- Filter the Title   -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Pesquisa por:</div>
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]='listFilter' />
+            </div>
+        </div>
+
+        <div class="row" [hidden]="!listFilter">
+            <div class="col-md-6">
+                <h3>Filtro de Pesquisa: {{listFilter}}</h3>
+            </div>
+        </div>
+
+        <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+        <div class="table-responsive">
+            <table class="table" *ngIf="products && products.length">
+                <thead>
+                    <tr>
+                        <td>#SKU</td>
+                        <td>Nome</td>
+                        <td>Descrição</td>
+                        <td>Preço</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let product of products| productFilter:listFilter'>
+                        <td>{{ product.sku | uppercase}}</td>
+                        <td><a [routerLink]="['/product', product.id]">{{ product.nome }}</a></td>
+                        <td>{{ product.descricao }}</td>
+                        <td>{{ product.preco | currency:'BRL':true}}</td>
+                        <td>
+                            <a class="btn btn-primary" [routerLink]="['/productEdit', product.id]">
+                                Editar
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

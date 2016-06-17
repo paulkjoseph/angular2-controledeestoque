@@ -1,0 +1,51 @@
+[
+    {
+        "id": 5629499534213120,
+        "sku": "1",
+        "nome": "Nome do produto 1",
+        "descricao": "Descricao do produto 1",
+        "preco": 10.0
+    },
+    {
+        "id": 5707702298738688,
+        "sku": "2",
+        "nome": "Nome do produto 2",
+        "descricao": "Descricao do produto 2",
+        "preco": 20.0
+    },
+    {
+        "id": 5668600916475904,
+        "sku": "3",
+        "nome": "Nome do produto 3",
+        "descricao": "Descricao do produto 3",
+        "preco": 30.0
+    },
+    {
+        "id": 5741031244955648,
+        "sku": "4",
+        "nome": "Nome do produto 4",
+        "descricao": "Descricao do produto 4",
+        "preco": 40.0
+    },
+    {
+        "id": 5649050225344512,
+        "sku": "5",
+        "nome": "Nome do produto 5",
+        "descricao": "Descricao do produto 5",
+        "preco": 50.0
+    },
+    {
+        "id": 5724160613416960,
+        "sku": "6",
+        "nome": "Nome do produto 6",
+        "descricao": "Descricao do produto 6",
+        "preco": 60.0
+    },
+    {
+        "id": 5685265389584384,
+        "sku": "7",
+        "nome": "Nome do produto 7",
+        "descricao": "Descricao do produto 7",
+        "preco": 70.0
+    }
+]
