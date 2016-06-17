@@ -27,12 +27,12 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
             ProductService = (function () {
                 function ProductService(_http) {
                     this._http = _http;
-                    this._productsUrl = 'https://1-3-dot-paulkibenjuguna-1420292.appspot.com/api/produtos';
+                    this._productsUrl = 'app/products/products.json';
                 }
                 ProductService.prototype.getProducts = function () {
                     return this._http.get(this._productsUrl)
                         .map(function (res) { return res.json(); })
-                        .do(function (data) { return console.log(data); })
+                        .do(function (data) { return console.log('Data: ' + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
                 ProductService.prototype.getProduct = function (id) {
@@ -43,14 +43,11 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
                         .catch(this.handleError);
                 };
                 ProductService.prototype.handleError = function (error) {
-                    // in a real world app, we may send the server to some remote logging infrastructure
-                    // instead of just logging it to the console
                     console.error(error);
-                    return Observable_1.Observable.throw(error.json().error || 'Server error');
+                    return Observable_1.Observable.throw(error.json().error || 'Houver falha na execução desta operação no servidor. Por favor, tente novamente mais tarde.');
                 };
                 ProductService.prototype.handleMap = function (res, id) {
                     var data = res.json();
-                    // Return an initialized object
                     if (id === 0) {
                         return {
                             'id': 0,

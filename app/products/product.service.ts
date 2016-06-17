@@ -7,14 +7,14 @@ import { IProduct } from './product';
 @Injectable()
 export class ProductService {
 
-    private _productsUrl = 'https://1-3-dot-paulkibenjuguna-1420292.appspot.com/api/produtos';
+    private _productsUrl = 'app/products/products.json';
 
     constructor(private _http: Http) { }
 
     getProducts() {
         return this._http.get(this._productsUrl)
             .map(res => <IProduct[]>res.json())
-            .do(data => console.log(data))
+            .do(data => console.log('Data: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
@@ -26,15 +26,12 @@ export class ProductService {
     }
 
     private handleError(error: Response) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
         console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        return Observable.throw(error.json().error || 'Houver falha na execução desta operação no servidor. Por favor, tente novamente mais tarde.');
     }
 
     private handleMap(res: any, id: number) {
         let data = <IProduct[]>res.json();
-        // Return an initialized object
         if (id === 0) {
             return {
                 'id': 0,

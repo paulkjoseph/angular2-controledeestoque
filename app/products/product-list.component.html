@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let product of products| productFilter:listFilter'>
+                    <tr *ngFor='let product of products | productFilter:listFilter'>
                         <td>{{ product.sku | uppercase}}</td>
                         <td><a [routerLink]="['/product', product.id]">{{ product.nome }}</a></td>
                         <td>{{ product.descricao }}</td>
