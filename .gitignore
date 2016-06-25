@@ -250,3 +250,68 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/typings
+/deploy
+
+# dependencies
+/node_modules
+/bower_components
+
+# Dart
+/.pub
+/.packages
+/packages
+/pubspec.lock
+/src/.pub
+/src/.packages
+/src/packages
+/src/pubspec.lock
+
+
+# IDEs
+/.idea
+/.vscode
+
+# misc
+.DS_Store
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db

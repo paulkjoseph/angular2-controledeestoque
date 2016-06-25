@@ -1,0 +1,29 @@
+md-sidenav-layout {
+  background: rgba(0,0,0,0.08);
+}
+
+.secondary-text {
+  color: rgba(0, 0, 0, 0.54);
+  margin: 20px 0px 20px 0px;
+}
+
+[md-fab] {
+  position: absolute;
+  right: 3%;
+  top: 34px;
+  z-index: 1000;
+}
+
+.md-input-card {
+  width: 50%;
+  margin: 0 auto;
+}
+
+md-input {
+  margin: 8px 0;
+  width: 100%;
+}
+
+.has-error {
+    color: red;
+}

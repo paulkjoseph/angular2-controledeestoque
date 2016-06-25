@@ -1,0 +1,101 @@
+<app>
+  <md-sidenav-layout fullscreen>
+    <md-sidenav #sidenav>
+      <md-nav-list>
+        <a md-list-item (click)="sidenav.close()">
+          <img md-list-avatar src="app/assets/controledeestoque.png" alt="Controle de Estoque">
+          <h2 md-line> Controle de Estoque </h2>
+          <h4 md-line class="secondary-text">Gerenciamento de produtos</h4>
+        </a>
+        <md-divider></md-divider>
+        <a md-list-item *ngFor="let menu of menus" (click)="sidenav.close();selectedOption(menu);">
+          <md-icon md-list-avatar>{{menu.icon}}</md-icon>
+          <h4 md-line>{{menu.name}}</h4>
+          <p md-line class="secondary-text">{{menu.description}}</p>
+        </a>
+        <md-divider></md-divider>
+        <h3 md-subheader>Sobre o Projeto</h3>
+        <a md-list-item (click)="sidenav.close()">
+          <md-icon md-list-avatar>contacts</md-icon>
+          <h4 md-line>Aluno: Paul Kibe Njuguna</h4>
+          <p md-line class="secondary-text"> Registro Acadêmico: 1420292 </p>
+        </a>
+        <a md-list-item (click)="sidenav.close()">
+          <md-icon md-list-avatar>local_library</md-icon>
+          <h4 md-line>Curso: Aplicações Web na Nuvem</h4>
+          <p md-line class="secondary-text">Pós-Graduação Lato Sensu - UFSCAR</p>
+        </a>
+      </md-nav-list>
+    </md-sidenav>
+    <md-toolbar color="primary">
+      <button md-icon-button (click)="sidenav.open()">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+      </svg>
+    </button> Controle de Estoque
+      <button md-fab (click)="create()">
+      <md-icon>add</md-icon>
+    </button>
+    </md-toolbar>
+
+    <md-progress-bar mode="indeterminate" color="accent" *ngIf="loading"></md-progress-bar>
+    
+    <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+    <div class="form" *ngIf="formShowing">
+      <form #frm="ngForm"  (ngSubmit)="save()">
+        <md-card class="md-input-card">
+          <md-card-title>{{title}}</md-card-title>
+          <md-card-content>
+            <md-input placeholder="SKU" [(ngModel)]="product.sku" name="sku" [disabled]="product.id !== null && product.id > 0"  required></md-input>
+            <md-input placeholder="Nome" [(ngModel)]="product.nome" required></md-input>
+            <md-input placeholder="Descrição" [(ngModel)]="product.descricao" required></md-input>
+            <md-input placeholder="Preço" align="end" [(ngModel)]="product.preco" style="width:50%" required>
+              <span md-prefix>R$&nbsp;</span>
+              <span md-suffix>.00</span>
+            </md-input>
+          </md-card-content>
+          <md-card-actions align="end">
+            <button md-raised-button color="accent" type="submit" [disabled]="!frm.form.valid">Salvar</button>
+          </md-card-actions>
+        </md-card>
+      </form>
+    </div>
+
+    <md-grid-list cols="4" rowHeight="3:3" gutterSize="4px" style="margin: 10px 10px 10px 10px;">
+      <md-grid-tile *ngFor="let product of products">
+        <md-card style="height:80%;">
+          <md-card-header>
+              <img md-card-avatar src="app/assets/shopping.png">
+              <md-card-title>{{product.sku}}</md-card-title>
+              <md-card-subtitle>{{product.nome}}</md-card-subtitle>
+          </md-card-header>
+          <br>
+          <md-card-content>
+              <p>{{product.descricao}}</p>
+              <h4>R$&nbsp;{{product.preco}}</h4>
+          </md-card-content>
+          <md-card-actions align="end">
+            <button md-button color="primary" (click)="edit(product)">Editar</button>
+            <button md-button color="accent" (click)="delete(product)">Excluir</button>
+          </md-card-actions>
+        </md-card>
+
+        <!--<md-card style="height:78%;">
+          <md-card-title-group>
+            <img md-card-sm-image src="app/assets/shopping.png">
+            <md-card-title>SKU: {{product.sku}}</md-card-title>
+            <md-card-subtitle>Nome: {{product.nome}}</md-card-subtitle>
+            <md-card-subtitle>Descrição: {{product.descricao}}</md-card-subtitle>
+            <md-card-title>R$&nbsp;{{product.preco}}</md-card-title>
+          </md-card-title-group>
+          <md-card-actions align="end">
+            <button md-button color="primary" (click)="edit(product)">Editar</button>
+            <button md-button color="accent" (click)="delete(product)">Excluir</button>
+          </md-card-actions>
+        </md-card>-->
+      </md-grid-tile>
+    </md-grid-list>
+
+  </md-sidenav-layout>
+</app>
