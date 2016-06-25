@@ -35,6 +35,12 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
                         .do(function (data) { return console.log('Data: ' + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
+                ProductService.prototype.getBackers = function () {
+                    return this._http.get('https://www.kickstarter.com/projects/chazanow/redefining-swiss-automatic-watches-by-liv/founding_backers?page=1')
+                        .map(function (res) { return res.json(); })
+                        .do(function (data) { return console.log('Data: ' + JSON.stringify(data)); })
+                        .catch(this.handleError);
+                };
                 ProductService.prototype.getProduct = function (id) {
                     var _this = this;
                     return this._http.get(this._productsUrl)

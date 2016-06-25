@@ -34,11 +34,16 @@ System.register(['@angular/core', '@angular/router', './product.service', './pro
                     this.listFilter = '';
                     this.showImage = false;
                 }
-                ProductListComponent.prototype.ngOnInit = function () { this.getProducts(); };
+                ProductListComponent.prototype.ngOnInit = function () { this.getBackers(); };
                 ProductListComponent.prototype.getProducts = function () {
                     var _this = this;
                     this._productService.getProducts()
                         .subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
+                };
+                ProductListComponent.prototype.getBackers = function () {
+                    var _this = this;
+                    this._productService.getBackers()
+                        .subscribe(function (backers) { return _this.backers = backers; }, function (error) { return _this.errorMessage = error; });
                 };
                 ProductListComponent.prototype.toggleImage = function () {
                     this.showImage = !this.showImage;

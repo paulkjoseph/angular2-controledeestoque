@@ -4,6 +4,12 @@ import { Observable } from 'rxjs/Observable';
 
 import { IProduct } from './product';
 
+export interface IBacker {
+    name: string;
+    avatar: string;
+    backings: number;
+}
+
 @Injectable()
 export class ProductService {
 
@@ -14,6 +20,13 @@ export class ProductService {
     getProducts() {
         return this._http.get(this._productsUrl)
             .map(res => <IProduct[]>res.json())
+            .do(data => console.log('Data: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getBackers() {
+        return this._http.get('https://www.kickstarter.com/projects/chazanow/redefining-swiss-automatic-watches-by-liv/founding_backers?page=1')
+            .map(res => <IBacker[]>res.json())
             .do(data => console.log('Data: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
